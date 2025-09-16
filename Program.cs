@@ -1,31 +1,38 @@
 ﻿Thread Time = new Thread(() =>
 {
-    Console.ForegroundColor = ConsoleColor.DarkGreen;
-    Console.Write($"\rTime: {DateTime.Now.ToLongTimeString()}   ");
-    Console.ResetColor();
-    Thread.Sleep(1000);
+    for (int i = 0; i < 3; i++)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkCyan;
+        Console.Write($"\n\t Time : {DateTime.Now.ToLongTimeString()}");
+        Console.ResetColor();
+        Thread.Sleep(1000);
+    }
 });
+Time.Start();
 
 Thread Loading = new Thread(() =>
 {
-    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-    Console.Write($"\n\t Loading... ");
-    Console.ResetColor();
-    Thread.Sleep(300);
+    for (int i = 0; i < 3; i++)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.Write($"\n\t Loading... {i+1}");
+        Console.ResetColor();
+        Thread.Sleep(200);
+    }
 });
+
+Loading.Start();
 
 Thread Input = new Thread(() =>
 {
-    Console.ForegroundColor = ConsoleColor.DarkGray;
-    Console.Write("Enter name : ");
-    Console.ResetColor();
-    string Input = Console.ReadLine();
-
-    Console.ForegroundColor = ConsoleColor.DarkRed;
-    Console.WriteLine(Input);
-    Console.ResetColor();
+    for (int i = 0; i < 3; i++)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        Console.Write($"\n\t Enter name : ");
+        string input = Console.ReadLine();  
+        Console.ResetColor();
+        Thread.Sleep(300);
+    }
 });
 
-Time.Start();
-Loading.Start();
 Input.Start();
